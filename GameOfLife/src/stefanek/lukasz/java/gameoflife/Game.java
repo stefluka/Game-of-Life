@@ -1,6 +1,5 @@
 package stefanek.lukasz.java.gameoflife;
 
-
 import java.util.Scanner;
 
 public class Game
@@ -42,22 +41,32 @@ public class Game
 		this.columns = columns;
 	}
 
-	public void fillTable()
+	public void setCellValue(int rowNumber, int columnNumber, boolean boolValue)
+	{
+		board[rowNumber][columnNumber] = boolValue;
+	}
+
+	public boolean getCellValue(int rowNumber, int columnNumber)
 	{
 
-		board[5][5] = true;
-		board[5][7] = true;
-		board[5][9] = true;
-		board[6][5] = true;
-		board[6][9] = true;
-		board[7][5] = true;
-		board[7][9] = true;
-		board[8][5] = true;
-		board[8][9] = true;
-		board[9][5] = true;
-		board[9][7] = true;
-		board[9][9] = true;
+		return board[rowNumber][columnNumber];
+	}
 
+	public void fillTable()
+	{
+		setCellValue(5, 5, true);
+		setCellValue(5, 7, true);
+		setCellValue(5, 9, true);
+		setCellValue(6, 5, true);
+		setCellValue(6, 9, true);
+		setCellValue(7, 5, true);
+		setCellValue(7, 9, true);
+		setCellValue(8, 5, true);
+		setCellValue(8, 9, true);
+		setCellValue(9, 5, true);
+		setCellValue(9, 7, true);
+		setCellValue(9, 9, true);
+		
 		/*
 		 * for (int i = 0; i < getRows(); i++) { for (int j = 0; j <
 		 * getColumns(); j++) { board[i][j] =
@@ -94,7 +103,7 @@ public class Game
 	private boolean generateNewValue(int x, int y)
 	{
 
-		int aliveNeighborsNumber = countALiveNeighbors(x, y);
+		int aliveNeighborsNumber = countAliveNeighbors(x, y);
 
 		if (board[x][y])
 		{
@@ -116,7 +125,7 @@ public class Game
 		return false;
 	}
 
-	private int countALiveNeighbors(int x, int y)
+	public int countAliveNeighbors(int x, int y)
 	{
 		int neighbors = 0;
 
